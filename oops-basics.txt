@@ -1,0 +1,83 @@
+Here are some basic **OOP (Object-Oriented Programming) exercise problems** covering **Encapsulation, Inheritance, Polymorphism, and Abstraction**.  
+
+---
+
+## **1. Encapsulation** (Data Hiding)  
+**Problem:**  
+Create a `BankAccount` class with:  
+- Private attributes: `_account_number`, `_balance`  
+- Methods: `deposit(amount)`, `withdraw(amount)`, `get_balance()`, `get_account_number()`  
+- Ensure that balance cannot be accessed directly.  
+
+**Task:**  
+- Create an object of `BankAccount`, deposit ₹5000, withdraw ₹2000, and print the balance.
+
+---
+
+## **2. Inheritance** (Parent-Child Relationship)  
+**Problem:**  
+Create a base class **`Vehicle`** with:  
+- Attributes: `brand`, `model`, `year`  
+- Method: `display_info()`  
+
+Create a subclass **`Car`** that inherits from `Vehicle`:  
+- Extra attribute: `num_doors`  
+- Extra method: `car_info()`  
+
+**Task:**  
+- Create an object of `Car`, set brand = "Toyota", model = "Camry", year = 2022, num_doors = 4, and display the information.
+
+---
+
+## **3. Polymorphism** (Method Overriding & Overloading)  
+**Problem 1: Method Overriding**  
+- Create a base class `Animal` with a method `speak()` that prints `"Some sound..."`.  
+- Create two subclasses:
+  - `Dog` (override `speak()` to print `"Bark!"`)  
+  - `Cat` (override `speak()` to print `"Meow!"`)  
+
+**Task:**  
+- Create objects of `Dog` and `Cat` and call `speak()`.
+
+---
+
+**Problem 2: Method Overloading (Python does not support it natively, but we can use default arguments)**  
+- Create a class `Calculator` with a method `add()` that:
+  - Adds two numbers if two arguments are given.
+  - Adds three numbers if three arguments are given.  
+
+**Task:**  
+- Call `add(5, 10)` → Output: `15`  
+- Call `add(3, 7, 2)` → Output: `12`  
+
+---
+
+## **4. Abstraction** (Using Abstract Classes)  
+**Problem:**  
+- Create an abstract class `Shape` with an abstract method `area()`.  
+- Create two subclasses:  
+  - `Circle` → Constructor takes `radius`, implements `area()` using formula π × r²  
+  - `Rectangle` → Constructor takes `length` and `width`, implements `area()` using formula length × width  
+
+**Task:**  
+- Create a `Circle` object with radius = 5 and a `Rectangle` object with length = 4, width = 6.  
+- Print their areas.
+
+---
+
+### **Bonus Challenge (Multiple Inheritance)**
+Create two base classes:  
+1. `Person` (Attributes: `name`, `age`, Method: `display_person()`)  
+2. `Employee` (Attributes: `company`, `salary`, Method: `display_employee()`)  
+
+Create a class `Manager` that inherits from both `Person` and `Employee`.  
+
+**Task:**  
+- Create an object of `Manager` and print all details.  
+
+---
+
+Would you like me to provide **code solutions** for these problems in **Python** or another language? 😊
+
+
+Ya {id: 2, url: '/login?returnUrl=%2Fhome', urlAfterRedirects: '/login?returnUrl=%2Fhome', type: 1}

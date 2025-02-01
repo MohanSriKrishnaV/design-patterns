@@ -1,0 +1,180 @@
+Great! Let's dive into some more challenging topics. Below are a few advanced **OOP** and **JavaScript** interview-level exercises that test your understanding of key concepts such as inheritance, polymorphism, design patterns, and more.
+
+---
+
+### **1. Design a Library System (Real-world Design)**
+
+**Problem:**
+You need to design a library system that can manage different types of books, users, and loaning operations. The system should allow:
+- Users to borrow and return books.
+- Track overdue books.
+- Different types of books (e.g., regular books, e-books).
+- Use inheritance to handle the shared properties of books.
+
+**Requirements:**
+- Base class `Book` with attributes like `title`, `author`, `ISBN`.
+- Subclasses `EBook` and `PrintedBook` to represent different types of books.
+- Base class `User` with methods to borrow and return books.
+- Subclass `PremiumUser` (inherits from `User`) with additional privileges like borrowing more books.
+
+**Task:**
+- Design the classes with proper attributes and methods.
+- Use **Polymorphism** for different types of books.
+- Handle overdue books.
+
+---
+
+### **2. Implement a Cache System (LRU Cache)**
+
+**Problem:**
+Implement an **LRU (Least Recently Used)** cache system using classes. It should allow:
+- Storing key-value pairs.
+- Automatically removing the least recently used item when the cache exceeds its capacity.
+
+**Requirements:**
+- The cache should have a maximum size.
+- Implement two main operations: `set(key, value)` and `get(key)`.
+- When the cache exceeds its capacity, remove the least recently used key-value pair.
+
+**Task:**
+- Implement the `LRUCache` class with a **Doubly Linked List** and **Hash Map** for efficient storage and access.
+
+---
+
+### **3. Observer Pattern: Event Dispatcher**
+
+**Problem:**
+Create a simple **Event Dispatcher** system where different components of the system can subscribe to events, and when those events occur, the dispatcher notifies all the subscribers.
+
+**Requirements:**
+- An `EventDispatcher` class that manages subscriptions and event triggering.
+- The dispatcher should allow multiple subscribers for the same event and notify all of them when the event is triggered.
+- Implement an example where different subscribers are notified when an event occurs.
+
+**Task:**
+- Create an `EventDispatcher` class that supports adding subscribers and triggering events.
+- Demonstrate the use of this class by setting up multiple subscribers.
+
+---
+
+### **4. Implement a Bank Transaction System (Transaction History)**
+
+**Problem:**
+Design a system to track bank account transactions. Every transaction should be logged in a transaction history and should have an amount, type (deposit/withdrawal), and timestamp.
+
+**Requirements:**
+- A `Transaction` class with attributes `amount`, `type`, and `timestamp`.
+- A `BankAccount` class to handle deposits, withdrawals, and track transaction history.
+- The `BankAccount` class should implement the **Strategy Pattern** to support different transaction types (e.g., normal transactions, fraud prevention).
+
+**Task:**
+- Create the classes and implement methods to deposit, withdraw, and maintain transaction history.
+- Use the **Strategy Pattern** to define different transaction behaviors.
+
+---
+
+### **5. Implement a Task Scheduler with Priorities**
+
+**Problem:**
+You need to implement a task scheduler where each task has a priority and a scheduled time. Tasks with higher priority should be executed before lower priority tasks, and tasks should be executed at their scheduled time.
+
+**Requirements:**
+- A `Task` class with `name`, `priority`, and `time`.
+- A `TaskScheduler` class that schedules tasks based on priority and time.
+- Use a **Min-Heap** or **Priority Queue** to manage tasks efficiently.
+
+**Task:**
+- Implement a task scheduler that prioritizes tasks and executes them in order.
+- Ensure the scheduler can handle multiple tasks with the same priority.
+
+---
+
+### **6. Implement a Custom Iterator (Iterator Pattern)**
+
+**Problem:**
+Design a custom **Iterator Pattern** for a collection of data. You should be able to iterate over a collection and provide additional functionality like filtering or transforming the data.
+
+**Requirements:**
+- A `Collection` class that holds an array of items.
+- An `Iterator` class that iterates over the collection.
+- Implement the **Iterator Pattern** with functionality like filtering and mapping the data during iteration.
+
+**Task:**
+- Design the `Collection` and `Iterator` classes, and implement filtering and transformation during iteration.
+
+---
+
+### **7. Implement a Singleton Pattern**
+
+**Problem:**
+Implement the **Singleton Pattern** in JavaScript. The Singleton should ensure that only one instance of the class exists, and it provides a global point of access.
+
+**Requirements:**
+- A class `DatabaseConnection` should only have one instance.
+- Implement the **Singleton Pattern** to ensure only one instance of the class is created.
+- Provide a method to access the instance.
+
+**Task:**
+- Create a `DatabaseConnection` class that implements the **Singleton Pattern**.
+
+---
+
+### **8. Design a Notification System**
+
+**Problem:**
+Design a notification system where different types of notifications can be sent (e.g., Email, SMS, Push Notification). The system should allow users to subscribe to different notification channels and trigger notifications.
+
+**Requirements:**
+- A `Notification` base class with methods for sending notifications.
+- Subclasses `EmailNotification`, `SMSNotification`, and `PushNotification`.
+- A `User` class that can subscribe to specific notification channels.
+- Use the **Observer Pattern** to notify users when a new notification is triggered.
+
+**Task:**
+- Implement the classes and methods to send notifications and allow users to subscribe to different channels.
+
+---
+
+### **9. Implement a Binary Search Tree (BST)**
+
+**Problem:**
+Design and implement a **Binary Search Tree (BST)** with the following operations:
+- **insert(value)**: Insert a new value into the tree.
+- **delete(value)**: Delete a value from the tree.
+- **search(value)**: Search for a value in the tree.
+- **in-order traversal**: Print the tree in in-order (sorted) order.
+
+**Requirements:**
+- Create a `Node` class with `left`, `right`, and `value` attributes.
+- Create a `BinarySearchTree` class with methods for insertion, deletion, searching, and traversal.
+
+**Task:**
+- Implement the BST and demonstrate its functionality.
+
+---
+
+### **10. Design a Movie Booking System**
+
+**Problem:**
+Design a movie booking system where users can:
+- View available movies.
+- Book tickets.
+- Check availability of a particular movie or theater.
+
+**Requirements:**
+- A `Movie` class with `title`, `director`, `duration`.
+- A `Theater` class that has multiple `Movie` objects and seats.
+- A `User` class with methods for booking tickets.
+
+**Task:**
+- Implement the system using proper class design and relationships between `Movie`, `Theater`, and `User`.
+
+---
+
+### **How to Approach These Problems:**
+- Break the problem down into smaller components.
+- Think about the relationships between classes (e.g., inheritance, composition).
+- Use design patterns (e.g., **Singleton**, **Factory**, **Observer**, **Strategy**) where appropriate.
+- Focus on **code readability**, **maintainability**, and **efficiency**.
+
+Would you like to start solving any of these problems? I can walk you through the solution for any of them! 😊

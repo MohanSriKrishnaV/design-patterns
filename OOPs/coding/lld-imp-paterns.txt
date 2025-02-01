@@ -1,0 +1,63 @@
+
+For FAANG-level LLD (Low-Level Design) problems that focus on objects and classes, you should know the following design patterns:
+
+1️⃣ Creational Design Patterns (How objects are created)
+🔹 Factory Pattern(done)
+
+Use Case: When object creation logic is complex or depends on runtime conditions.
+Example: Creating different types of Vehicle (Car, Bike, Truck) in a parking lot system.
+FAANG Question Example: "Design a notification system that sends SMS, Email, or Push notifications based on user preferences."
+🔹 Singleton Pattern
+
+Use Case: When you need one instance of a class throughout the application.
+Example: A Logger class for debugging messages or a DatabaseConnection instance.
+FAANG Question Example: "Design a configuration manager that loads system-wide settings only once."
+2️⃣ Structural Design Patterns (How classes and objects are structured)
+🔹 Adapter Pattern
+
+Use Case: When integrating legacy systems with a new interface.
+Example: Converting OldPaymentGateway to NewPaymentGateway without changing the client code.
+FAANG Question Example: "Design an interface to connect an old billing system with a modern API."
+🔹 Decorator Pattern
+
+Use Case: Adding features dynamically without modifying the core class.
+Example: Adding GPS, Sunroof, or Insurance to a Car object dynamically.
+FAANG Question Example: "Design a coffee ordering system where customers can add extra ingredients like milk, sugar, or caramel."
+🔹 Proxy Pattern
+
+Use Case: When controlling access to an object (e.g., security, logging, caching).
+Example: A VideoStreamingProxy class that caches videos instead of fetching them every time.
+FAANG Question Example: "Design a proxy server for managing access to a restricted API."
+3️⃣ Behavioral Design Patterns (How objects interact with each other)
+🔹 Observer Pattern
+
+Use Case: When multiple objects need to be notified about state changes.
+Example: A Stock Market App where users get notifications on price changes.
+FAANG Question Example: "Design a publisher-subscriber system for push notifications in a chat app."
+🔹 Strategy Pattern
+
+Use Case: When multiple algorithms exist for a task, and you need to choose one at runtime.
+Example: Different payment methods (CreditCard, UPI, PayPal) for an e-commerce checkout.
+FAANG Question Example: "Design a travel booking system that calculates fares differently for Bus, Train, and Flight."
+🔹 Command Pattern
+
+Use Case: When implementing Undo/Redo functionality.
+Example: A text editor where user actions (Copy, Paste, Delete) are stored as commands.
+FAANG Question Example: "Design a smart home system where commands can be queued and executed (e.g., turn on lights, adjust AC, play music)."
+🔹 State Pattern
+
+Use Case: When an object's behavior depends on its state.
+Example: A VendingMachine that behaves differently based on states (HasMoney, Dispensing, OutOfStock).
+FAANG Question Example: "Design an elevator system with multiple floors and states (MovingUp, MovingDown, Idle)."
+🔹 Mediator Pattern
+
+Use Case: When objects interact via a central mediator instead of talking directly.
+Example: A Chat Room where users send messages through a ChatMediator.
+FAANG Question Example: "Design an air traffic control system where multiple planes communicate via a central control tower."
+🔥 Must-Know FAANG Design Questions (Using These Patterns)
+Design a Parking Lot (Factory, Singleton, Strategy)
+Design an ATM System (State, Strategy)
+Design a Cab Booking System (e.g., Uber) (Observer, Factory, Strategy)
+Design a Multi-threaded Job Scheduler (Command, Singleton)
+Design a Social Media Feed (e.g., Twitter, Instagram) (Observer, Proxy)
+Design a File System (e.g., Linux File Manager) (Composite, Visitor)

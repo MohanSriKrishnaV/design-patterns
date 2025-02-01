@@ -1,0 +1,67 @@
+**Design patterns** are typical solutions to commonly occurring problems in software design. They provide a standard way to solve a problem that can be reused across different scenarios. Design patterns help you create flexible, scalable, and maintainable systems. These patterns come from real-world design experiences and have been refined over time to be effective and widely adopted.
+
+### **Types of Design Patterns:**
+Design patterns are usually categorized into three main types based on their usage in the system:
+
+#### 1. **Creational Patterns** (Object Creation)
+These patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. They help control the instantiation process and can make a system more flexible and reusable.
+
+- **Singleton**: Ensures a class has only one instance and provides a global point of access to that instance.
+- **Factory Method**: Defines an interface for creating an object, but allows subclasses to alter the type of objects that will be created.
+- **Abstract Factory**: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+- **Builder**: Separates the construction of a complex object from its representation, allowing the same construction process to create different representations.
+- **Prototype**: Creates new objects by copying an existing object, known as the prototype.
+
+#### 2. **Structural Patterns** (Object Composition)
+These patterns deal with object composition and the way objects are connected together to form larger structures.
+
+- **Adapter**: Allows incompatible interfaces to work together by converting one interface into another.
+- **Bridge**: Decouples an abstraction from its implementation, allowing the two to vary independently.
+- **Composite**: Allows you to compose objects into tree-like structures to represent part-whole hierarchies.
+- **Decorator**: Attaches additional responsibilities to an object dynamically, providing a flexible alternative to subclassing for extending functionality.
+- **Facade**: Provides a simplified interface to a complex subsystem, making it easier to use.
+- **Flyweight**: Reduces memory usage by sharing common parts of the object state.
+- **Proxy**: Provides a surrogate or placeholder object for another object.
+
+#### 3. **Behavioral Patterns** (Object Communication)
+These patterns deal with object interactions and responsibility delegation between objects.
+
+- **Observer**: Defines a one-to-many dependency between objects, where a change in one object triggers notifications to its dependents.
+- **Strategy**: Defines a family of algorithms, encapsulates each one, and makes them interchangeable.
+- **Command**: Encapsulates a request as an object, allowing the parameterization of clients with queues, requests, and logs.
+- **State**: Allows an object to change its behavior when its internal state changes.
+- **Iterator**: Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+- **Mediator**: Defines an object that centralizes communication between objects, reducing the need for direct references between them.
+- **Chain of Responsibility**: Allows multiple handlers to process a request, passing the request along the chain until one of the handlers processes it.
+- **Memento**: Captures the internal state of an object without exposing its details, so the object can be restored to that state later.
+- **Visitor**: Allows you to add further operations to objects without modifying them.
+
+---
+
+### **When to Use Design Patterns:**
+- When the problem you're facing is common, and there's an established solution.
+- When you want to build a flexible, reusable, and scalable system.
+- When working with a team of developers to ensure consistency and good coding practices.
+
+---
+
+### **Examples of Design Patterns:**
+1. **Singleton Example**:  
+   A database connection manager class, where you want only one instance of the class to manage database connections.
+   
+2. **Factory Method Example**:  
+   A document editor application where you can create different types of documents (e.g., Word, PDF, Excel) using the same method but producing different types based on the document type.
+
+3. **Observer Example**:  
+   In a weather station application, where the weather station is the subject, and multiple devices (e.g., phone app, display screens) are observers that get notified of the weather changes.
+
+---
+
+### **Benefits of Design Patterns:**
+1. **Reusability**: Reuse proven solutions to common problems.
+2. **Scalability**: Helps in scaling applications with well-defined structures.
+3. **Maintainability**: Easier to modify and extend systems that follow design patterns.
+4. **Communication**: Patterns provide a common vocabulary that improves communication between developers.
+5. **Flexibility**: Makes it easier to change and adapt the system as requirements evolve.
+
+Would you like a deeper dive into any specific design pattern or examples in code?

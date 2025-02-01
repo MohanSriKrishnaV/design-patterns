@@ -1,0 +1,245 @@
+### **SOLID Principles in OOP – A Beginner’s Guide** 🚀  
+SOLID is a set of five design principles that help in writing maintainable, scalable, and flexible code.  
+
+**S** – **Single Responsibility Principle (SRP)**  
+**O** – **Open/Closed Principle (OCP)**  
+**L** – **Liskov Substitution Principle (LSP)**  
+**I** – **Interface Segregation Principle (ISP)**  
+**D** – **Dependency Inversion Principle (DIP)**  
+
+---
+
+## **1️⃣ Single Responsibility Principle (SRP)**
+📌 **Definition**: A class should have only **one reason to change**, meaning it should have **only one responsibility**.  
+📌 **Why?** Avoids **"God classes"**, improves **modularity**, and makes debugging easier.  
+
+### **❌ Bad Example (Violates SRP)**
+```javascript
+class Book {
+    constructor(title, author, content) {
+        this.title = title;
+        this.author = author;
+        this.content = content;
+    }
+
+    saveToFile(filename) {
+        console.log(`Saving ${this.title} to ${filename}`);
+    }
+
+    print() {
+        console.log(`Printing ${this.title}`);
+    }
+}
+```
+🔴 **Problem:** The `Book` class **does two things** –  
+1. Handles book data  
+2. Saves/prints the book  
+
+📌 **Fix:** Split responsibilities into separate classes.  
+
+### ✅ **Good Example (Follows SRP)**
+```javascript
+class Book {
+    constructor(title, author, content) {
+        this.title = title;
+        this.author = author;
+        this.content = content;
+    }
+}
+
+class BookPrinter {
+    print(book) {
+        console.log(`Printing ${book.title}`);
+    }
+}
+
+class BookSaver {
+    save(book, filename) {
+        console.log(`Saving ${book.title} to ${filename}`);
+    }
+}
+```
+✅ Now, **Book** only handles data, and printing/saving is handled separately.  
+
+---
+
+### **📝 Exercise 1 – Fix SRP Violation**
+The following `Employee` class violates SRP.  
+✅ **Task:** Refactor it to follow SRP.  
+
+```javascript
+class Employee {
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    calculateSalary() {
+        return this.salary * 12; 
+    }
+
+    generateReport() {
+        console.log(`Report for ${this.name}`);
+    }
+}
+```
+🔹 **Hint:** Move `calculateSalary` and `generateReport` to separate classes.
+
+---
+
+## **2️⃣ Open/Closed Principle (OCP)**
+📌 **Definition**: A class should be **open for extension but closed for modification**.  
+📌 **Why?** We should be able to **add new features without modifying existing code** (avoids breaking existing functionality).  
+
+### **❌ Bad Example (Violates OCP)**
+```javascript
+class Discount {
+    applyDiscount(userType, price) {
+        if (userType === "normal") {
+            return price * 0.9;
+        } else if (userType === "premium") {
+            return price * 0.8;
+        }
+        return price;
+    }
+}
+```
+🔴 **Problem:** If a new user type (e.g., "VIP") is added, we **must modify** this class.  
+
+📌 **Fix:** Use **polymorphism** – create separate classes for different discounts.  
+
+### ✅ **Good Example (Follows OCP)**
+```javascript
+class Discount {
+    apply(price) {
+        return price;
+    }
+}
+
+class NormalDiscount extends Discount {
+    apply(price) {
+        return price * 0.9;
+    }
+}
+
+class PremiumDiscount extends Discount {
+    apply(price) {
+        return price * 0.8;
+    }
+}
+```
+✅ Now, if we add a **VIP discount**, we **don’t modify old code**.  
+
+---
+
+### **📝 Exercise 2 – Fix OCP Violation**
+The `PaymentProcessor` class violates OCP.  
+✅ **Task:** Refactor it so that new payment methods can be added **without modifying existing code**.  
+
+```javascript
+class PaymentProcessor {
+    processPayment(type, amount) {
+        if (type === "credit") {
+            console.log(`Processing credit payment of $${amount}`);
+        } else if (type === "paypal") {
+            console.log(`Processing PayPal payment of $${amount}`);
+        }
+    }
+}
+```
+🔹 **Hint:** Use inheritance to separate different payment types.
+
+---
+
+## **3️⃣ Liskov Substitution Principle (LSP)**
+📌 **Definition**: A subclass should **replace its parent class without breaking functionality**.  
+📌 **Why?** Ensures **correct inheritance** – subclasses should **not change** the expected behavior of the base class.  
+
+### **❌ Bad Example (Violates LSP)**
+```javascript
+class Bird {
+    fly() {
+        console.log("Flying...");
+    }
+}
+
+class Penguin extends Bird {
+    fly() {
+        throw new Error("Penguins can't fly!");
+    }
+}
+```
+🔴 **Problem:** The subclass (`Penguin`) **modifies** expected behavior, **breaking** the program.  
+
+📌 **Fix:** Use **composition** instead of inheritance.  
+
+### ✅ **Good Example (Follows LSP)**
+```javascript
+class Bird {
+    move() {
+        console.log("Moving...");
+    }
+}
+
+class FlyingBird extends Bird {
+    fly() {
+        console.log("Flying...");
+    }
+}
+
+class Penguin extends Bird {
+    swim() {
+        console.log("Swimming...");
+    }
+}
+```
+✅ Now, `Penguin` **doesn’t break** the behavior of `Bird`.
+
+---
+
+### **📝 Exercise 3 – Fix LSP Violation**
+The following `Rectangle` and `Square` classes violate LSP.  
+✅ **Task:** Refactor them so that the subclass doesn’t break the behavior of the parent class.  
+
+```javascript
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    setWidth(width) {
+        this.width = width;
+    }
+
+    setHeight(height) {
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Square extends Rectangle {
+    setWidth(width) {
+        this.width = width;
+        this.height = width;
+    }
+
+    setHeight(height) {
+        this.width = height;
+        this.height = height;
+    }
+}
+```
+🔹 **Hint:** Instead of extending `Rectangle`, create a separate `Square` class.
+
+---
+
+### **🔹 Next Steps**
+Once you solve these **three exercises**, we'll move to:  
+✅ **Interface Segregation Principle (ISP)**  
+✅ **Dependency Inversion Principle (DIP)**  
+
+💡 **Would you like me to check your solutions after you complete them?** 🚀

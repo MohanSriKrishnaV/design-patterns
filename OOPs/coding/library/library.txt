@@ -1,0 +1,55 @@
+Alright, let's approach this like a technical interview!
+
+---
+
+### **1. Let's start with the `Book` class design:**
+
+- Can you walk me through how you would design the base class `Book`? What attributes would you include to represent a book in the system, and why? 
+
+- What methods do you think are essential for the `Book` class? How would you handle things like borrowing, returning, and tracking overdue books at this level?
+
+---
+
+### **2. Moving on to inheritance:**
+
+- We have two types of books: `EBook` and `PrintedBook`. How would you structure the inheritance in your system? Would you prefer to create separate classes for both or find a way to generalize them under a common base class?
+
+- How would polymorphism help in this design, especially when borrowing or returning these books? Can you provide an example?
+
+---
+
+### **3. Overdue Books Management:**
+
+- How would you track overdue books? What methods would you include in your classes to ensure that overdue books are flagged correctly?
+
+- How would you notify a user if they have overdue books? Would you handle this within the `Book` class or somewhere else?
+
+---
+
+### **4. User Class:**
+
+- What would the `User` class look like? What attributes would be needed for a user, and what methods would handle borrowing and returning books?
+
+- How would you model a `PremiumUser` subclass? What would be the key differences between a regular `User` and a `PremiumUser` in terms of functionality?
+
+---
+
+### **5. Interaction Between Classes:**
+
+- How would the `Library` class interact with `Book` and `User`? What methods would be responsible for managing users, books, and their operations within the library?
+
+---
+
+### **6. Extension of the System:**
+
+- Suppose we needed to introduce a reservation system where users can reserve books that are currently borrowed. How would you extend your design to support this functionality?
+
+---
+
+### **7. Scalability and Optimization:**
+
+- If the system had to scale to handle thousands of books and users, what changes would you make to optimize the design for performance? For example, how would you manage searches for books or track overdue items efficiently?
+
+---
+
+Please take your time to respond, and we can discuss each part as you go.

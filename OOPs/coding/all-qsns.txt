@@ -1,0 +1,82 @@
+Since you've just learned OOP basics, you can solve several **Low-Level Design (LLD) problems** using fundamental OOP concepts like **Encapsulation, Abstraction, Inheritance, and Polymorphism**. Here are some problems that only require OOP basics:  
+
+---
+
+### 🔹 **1. Design a Parking Lot System**  
+**Concepts Used:** Classes, Objects, Encapsulation, Inheritance  
+
+👉 **Problem:**  
+Design a parking lot system that supports different vehicle types (car, bike, truck), parking spots, and basic operations like parking and leaving a vehicle.  
+
+💡 **OOP Breakdown:**  
+- `Vehicle` class (base class with subclasses: `Car`, `Bike`, `Truck`)  
+- `ParkingSpot` class (small, medium, large spots)  
+- `ParkingLot` class (handles available spots, assigns vehicles)  
+
+---
+
+### 🔹 **2. Design a Library Management System**  
+**Concepts Used:** Classes, Objects, Encapsulation  
+
+👉 **Problem:**  
+Build a system to manage books, users, and borrowing transactions.  
+
+💡 **OOP Breakdown:**  
+- `Book` class (title, author, ISBN, availability)  
+- `User` class (name, ID, borrowed books)  
+- `Library` class (manages books, borrowing, returning)  
+
+---
+
+### 🔹 **3. Design an ATM Machine**  
+**Concepts Used:** Classes, Objects, Encapsulation  
+
+👉 **Problem:**  
+Simulate an ATM system that allows users to withdraw money, check balance, and deposit cash.  
+
+💡 **OOP Breakdown:**  
+- `Account` class (balance, deposit, withdraw)  
+- `ATM` class (cash dispenser, transaction handling)  
+
+---
+
+### 🔹 **4. Design a Movie Ticket Booking System**  
+**Concepts Used:** Classes, Objects, Encapsulation, Inheritance  
+
+👉 **Problem:**  
+Users should be able to search for movies, select seats, and book tickets.  
+
+💡 **OOP Breakdown:**  
+- `Movie` class (title, genre, duration)  
+- `Theater` class (location, available seats)  
+- `Ticket` class (seat number, price)  
+
+---
+
+### 🔹 **5. Design a Food Ordering System**  
+**Concepts Used:** Classes, Objects, Encapsulation  
+
+👉 **Problem:**  
+Customers should be able to browse menus, order food, and receive an invoice.  
+
+💡 **OOP Breakdown:**  
+- `FoodItem` class (name, price, category)  
+- `Order` class (food items, total amount)  
+- `Restaurant` class (manages orders)  
+
+---
+
+### 🔹 **6. Design an Online Shopping Cart**  
+**Concepts Used:** Classes, Objects, Encapsulation, Inheritance  
+
+👉 **Problem:**  
+Users can add/remove items, apply discounts, and checkout.  
+
+💡 **OOP Breakdown:**  
+- `Product` class (name, price, category)  
+- `Cart` class (list of items, total price)  
+- `User` class (shopping history)  
+
+---
+
+Would you like to pick a problem and try implementing it? I can guide you step by step! 🚀

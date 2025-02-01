@@ -1,0 +1,111 @@
+Great! Now that you’ve learned **SOLID principles**, here are some **Low-Level Design (LLD) questions** to practice. These will help you apply **OOP, SOLID, design patterns, and system design** in real-world scenarios.
+
+---
+
+## **🔹 Beginner LLD Questions (OOP + SOLID)**
+1. **Design a Parking Lot System**  
+   - Requirements:  
+     - Multiple types of vehicles (car, bike, truck)  
+     - Different parking spots (small, medium, large)  
+     - Entry/Exit gates, ticket generation, and payment system  
+
+2. **Design an ATM System**  
+   - Requirements:  
+     - User authentication with PIN  
+     - Cash withdrawal, deposit, and balance check  
+     - Different bank accounts (savings, current)  
+
+3. **Design an Online Bookstore**  
+   - Requirements:  
+     - Users can browse, search, and buy books  
+     - Shopping cart and payment integration  
+     - Book reviews and ratings  
+
+4. **Design a Library Management System**  
+   - Requirements:  
+     - Books, authors, and users  
+     - Users can borrow/return books  
+     - Late fee calculation  
+
+5. **Design an Elevator System**  
+   - Requirements:  
+     - Multiple elevators in a building  
+     - Request handling from different floors  
+     - Optimized movement of elevators  
+
+---
+
+## **🔹 Intermediate LLD Questions (Design Patterns + SOLID)**
+6. **Design a Movie Ticket Booking System**  
+   - Requirements:  
+     - Users can select movies, seats, and book tickets  
+     - Different types of theaters (IMAX, 2D, 3D)  
+     - Payment and refund process  
+
+7. **Design a Ride-Sharing System (like Uber)**  
+   - Requirements:  
+     - Drivers and passengers  
+     - Ride request, ride matching, and pricing  
+     - Tracking system and payment integration  
+
+8. **Design a Food Delivery System (like Swiggy/Zomato)**  
+   - Requirements:  
+     - Users can browse restaurants, order food, and make payments  
+     - Delivery partners handle orders  
+     - Real-time tracking of food delivery  
+
+9. **Design a Hotel Booking System**  
+   - Requirements:  
+     - Users can search and book rooms  
+     - Different room types (single, double, suite)  
+     - Payment, check-in, and cancellation policies  
+
+10. **Design a Chess Game**  
+   - Requirements:  
+     - Two players, turn-based moves  
+     - Piece movement rules (pawn, rook, knight, etc.)  
+     - Game win conditions  
+
+---
+
+## **🔹 Advanced LLD Questions (Scalability + Distributed Systems)**
+11. **Design a URL Shortener (like bit.ly)**  
+    - Requirements:  
+      - Generate short URLs for long URLs  
+      - Handle high traffic and store millions of URLs  
+      - Analytics for each shortened URL  
+
+12. **Design a Social Media Platform (like Twitter)**  
+    - Requirements:  
+      - Users can post tweets, follow other users  
+      - Like, retweet, and comment features  
+      - Timeline ranking system  
+
+13. **Design a File Sharing System (like Google Drive)**  
+    - Requirements:  
+      - Users can upload, download, and share files  
+      - Access control (read/write permissions)  
+      - File versioning and history  
+
+14. **Design a Logging System (like Splunk, ELK Stack)**  
+    - Requirements:  
+      - Store, process, and analyze logs from multiple sources  
+      - Real-time search and alerting  
+      - Scalability for high-volume log data  
+
+15. **Design a Distributed Cache System (like Redis)**  
+    - Requirements:  
+      - Key-value storage  
+      - Expiry and eviction policies  
+      - High availability and fault tolerance  
+
+---
+
+### **🚀 How to Approach LLD Questions?**
+1. **Understand Requirements** → Ask clarifying questions  
+2. **Identify Entities** → Define classes and relationships  
+3. **Apply SOLID Principles** → Keep the design flexible and scalable  
+4. **Use Design Patterns** → Factory, Singleton, Observer, etc.  
+5. **Optimize for Scalability** → Consider databases, caching, and API design  
+
+Would you like to start with **one of these questions**, and I can guide you through the design process? 🚀

@@ -1,0 +1,68 @@
+Sure! Here are detailed **object-oriented interview questions** related to designing a **Parking Lot System**:  
+
+---
+
+### **🔹 Basic Object-Oriented Design**  
+
+#### **1️⃣ Identifying Classes & Objects**  
+📌 **Q: What are the main objects in the parking lot system?**  
+💡 **Purpose:** This question tests your ability to break down a real-world system into objects. Think about the **entities** involved in a parking lot, such as `Vehicle`, `ParkingSpot`, `ParkingLot`, and `Ticket`.  
+
+#### **2️⃣ Designing the Vehicle Class**  
+📌 **Q: How would you define a `Vehicle` class? What attributes and methods should it have?**  
+💡 **Purpose:** This evaluates your understanding of class design. The `Vehicle` class could have properties like `licensePlate`, `vehicleType`, and methods like `park()` and `exit()`.  
+
+#### **3️⃣ Designing the Parking Spot Class**  
+📌 **Q: How would you define a `ParkingSpot` class? What attributes should it have?**  
+💡 **Purpose:** This checks how you structure **parking spots**. A `ParkingSpot` might have attributes like `spotId`, `isOccupied`, `vehicleTypeAllowed`, and methods like `assignVehicle()` and `removeVehicle()`.  
+
+---
+
+### **🔹 Encapsulation & Access Modifiers**  
+
+#### **4️⃣ Restricting Direct Access to Data**  
+📌 **Q: How can we ensure that a parking spot’s status (occupied or not) is updated only through defined methods?**  
+💡 **Purpose:** This tests your understanding of **encapsulation**. You should use `private` attributes and expose them via `getter` and `setter` methods.  
+
+---
+
+### **🔹 Inheritance & Polymorphism**  
+
+#### **5️⃣ Using Inheritance for Different Vehicle Types**  
+📌 **Q: How would you use **inheritance** to differentiate between `Car`, `Bike`, and `Truck`?**  
+💡 **Purpose:** This checks your **OOP modeling skills**. You might create a `Vehicle` base class with subclasses `Car`, `Bike`, and `Truck`.  
+
+#### **6️⃣ Overriding Methods for Different Vehicle Types**  
+📌 **Q: How would method overriding help in handling different parking logic for trucks and bikes?**  
+💡 **Purpose:** This tests **polymorphism**. Trucks need **larger spots**, while bikes need **smaller ones**. The `park()` method can be overridden to account for these differences.  
+
+---
+
+### **🔹 Associations Between Objects**  
+
+#### **7️⃣ Establishing Relationships Between Classes**  
+📌 **Q: How should the `ParkingLot` class manage multiple `ParkingSpot` objects?**  
+💡 **Purpose:** This evaluates **associations** (e.g., `one-to-many` relationship). The `ParkingLot` class can have a **list of parking spots** and methods to find available spots.  
+
+#### **8️⃣ Managing Entry & Exit of Vehicles**  
+📌 **Q: How will you implement vehicle entry and exit using an object-oriented approach?**  
+💡 **Purpose:** This tests how you **track and update** parking status using classes.  
+
+- When a vehicle **enters**, assign it a `ParkingSpot`.  
+- When it **leaves**, update the spot’s status and issue a parking fee.  
+
+---
+
+### **🔹 Real-World Constraints & Scalability**  
+
+#### **9️⃣ Handling Limited Parking Capacity**  
+📌 **Q: How would you handle a situation where the parking lot is full?**  
+💡 **Purpose:** This tests your ability to **handle constraints**. You can use **queues** or implement a **waitlist system**.  
+
+#### **🔟 Tracking Tickets & Payments**  
+📌 **Q: How can we design a `ParkingTicket` system to track vehicle entry time and calculate the fee?**  
+💡 **Purpose:** This evaluates **real-world application** of OOP. The `ParkingTicket` class can store `entryTime`, `exitTime`, and `amountDue`.  
+
+---
+
+These questions will **test your OOP understanding** while keeping the discussion focused on **real-world problem-solving**. Would you like a **UML diagram** or **code example** for any of these? 🚗💨
