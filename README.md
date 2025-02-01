@@ -1,4 +1,4 @@
-Certainly! Here's a template for a **README.md** for your GitHub page on **Learning Design Patterns**. Feel free to customize it based on your learning journey, the design patterns you've explored, and the structure of your repository.
+
 
 ---
 
