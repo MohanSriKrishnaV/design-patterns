@@ -1,0 +1,116 @@
+The **Circuit Breaker Pattern** is a design pattern used to **prevent a system from making repeated calls to a service or component** that is known to be failing. It's commonly used in **microservice architectures** and distributed systems to avoid overwhelming a failing service, allowing it time to recover.
+
+### **How It Works:**
+The circuit breaker pattern is like an electrical circuit breaker. If a system repeatedly fails or experiences errors, the **circuit breaker "trips"** to stop further calls to the failing service, preventing it from causing more problems. Once the system stabilizes or recovers, the breaker **closes again**, allowing calls to resume.
+
+### **States of a Circuit Breaker:**
+1. **Closed**:  
+   - In this state, the circuit breaker allows requests to pass through to the service. If the service keeps responding successfully, everything functions normally.
+   
+2. **Open**:  
+   - If the service fails repeatedly (based on a threshold you set), the circuit breaker enters the **open state**, preventing further requests from being sent to the failing service. During this state, the system can return fallback data or error responses to the caller.
+
+3. **Half-Open**:  
+   - After a period of time (or after a fixed number of requests), the circuit breaker enters the **half-open state**. In this state, the system allows a limited number of requests to pass through to the failing service to see if it has recovered. If the service responds successfully, the circuit breaker closes again. If it still fails, the circuit breaker opens again.
+
+---
+
+### **Example Use Case:**
+Imagine you're building an e-commerce platform with a **payment service**. If the payment service goes down, continuously trying to process payments could make the system even worse, causing more delays. Instead, you can use the circuit breaker pattern to:
+
+1. **Prevent Overloading** the payment service when it's failing.
+2. **Give the Payment Service Time to Recover** without continuously failing over and over.
+3. **Return Fallback Responses** to users, such as "payment temporarily unavailable" rather than continuing to try and fail.
+
+---
+
+### **Circuit Breaker Example in Code (JavaScript/Node.js):**
+
+Here's a basic implementation of a circuit breaker pattern:
+
+```js
+class CircuitBreaker {
+    constructor(failureThreshold, recoveryTimeout) {
+        this.failureThreshold = failureThreshold;  // How many failures before opening the circuit
+        this.recoveryTimeout = recoveryTimeout;    // Time before trying again
+        this.failureCount = 0;  // Number of failures
+        this.state = 'CLOSED';  // Current state of the breaker
+    }
+
+    async callService(serviceFunc) {
+        if (this.state === 'OPEN') {
+            console.log("Circuit breaker is open. Skipping service call.");
+            return 'Service unavailable, try again later';
+        }
+
+        try {
+            // Call the service
+            const result = await serviceFunc();
+            this.reset();
+            return result;
+        } catch (error) {
+            this.failureCount++;
+            console.log("Service failed. Incrementing failure count.");
+
+            if (this.failureCount >= this.failureThreshold) {
+                this.state = 'OPEN';
+                console.log("Circuit breaker is now open.");
+                setTimeout(() => this.state = 'HALF-OPEN', this.recoveryTimeout);
+            }
+
+            return 'Service error, please try again later';
+        }
+    }
+
+    reset() {
+        this.failureCount = 0;
+        this.state = 'CLOSED';
+    }
+}
+
+// Example service function (simulate a payment service)
+const paymentService = async () => {
+    if (Math.random() > 0.7) {
+        throw new Error("Payment service failed");
+    } else {
+        return "Payment processed successfully";
+    }
+};
+
+// Create a circuit breaker with a threshold of 3 failures and a 5-second recovery timeout
+const circuitBreaker = new CircuitBreaker(3, 5000);
+
+// Simulating requests
+async function makePayment() {
+    const response = await circuitBreaker.callService(paymentService);
+    console.log(response);
+}
+
+// Make multiple payment attempts
+for (let i = 0; i < 10; i++) {
+    makePayment();
+}
+```
+
+---
+
+### **Explanation:**
+1. **CircuitBreaker Class:**
+   - The class keeps track of the **failure count**, the **current state** of the breaker, and the **failure threshold** (how many failed attempts trigger the circuit to open).
+   
+2. **callService Method:**
+   - The `callService` method tries to call the service (`paymentService` in this case).
+   - If the service fails and the failure threshold is exceeded, the circuit breaker moves into the **OPEN state** and stops further calls to the service.
+   - After a **recovery timeout**, the breaker goes into **HALF-OPEN**, and a few requests are allowed to see if the service is functioning again.
+
+---
+
+### **Benefits of the Circuit Breaker Pattern:**
+- **Prevents System Overload**: If a service is failing, the circuit breaker prevents the system from repeatedly calling it, which could cause cascading failures.
+- **Improves Fault Tolerance**: Provides a way to handle failures gracefully without overwhelming the system.
+- **Improves Resilience**: Allows the system to recover from failures more smoothly by giving faulty services time to stabilize.
+
+---
+
+### **In Summary:**
+The **circuit breaker pattern** is essential in **distributed systems** to handle **temporary failures** gracefully, ensuring that a service doesn't continue to try and fail repeatedly, which could cause further issues. It helps improve system reliability and resilience.

@@ -1,0 +1,164 @@
+Ah, I see! You’re asking for the **Observer Pattern** in terms of **Object-Oriented Design (OOD)** and **Low-Level Design (LLD)**, focusing on implementing it in a class-based system rather than using reactive programming or RxJS in Angular.
+
+Here’s a more **OOP-based approach** to the **Observer Pattern** (in TypeScript), which follows Low-Level Design (LLD) principles. 
+
+### **Observer Pattern in OOP/LLD**
+
+In **Low-Level Design (LLD)**, you typically want to design the **Observer** and **Subject** as distinct classes, focusing on how objects interact with each other. You would implement this pattern to manage dependencies between objects in a flexible and decoupled way.
+
+#### **Concepts:**
+- **Observer**: The objects that are interested in the state change of the **Subject** and need to react to it.
+- **Subject**: The object whose state is being tracked by the observers. When the state changes, it notifies all registered observers.
+
+#### **Step-by-Step OOP Implementation of the Observer Pattern:**
+
+### **1. Observer Interface**
+
+The **Observer** interface defines the method (`update`) that all concrete observers will implement to react to state changes in the subject.
+
+```typescript
+interface Observer {
+  update(message: string): void; // This will be called when the Subject updates.
+}
+```
+
+### **2. Subject Interface**
+
+The **Subject** interface defines methods for subscribing, unsubscribing, and notifying observers.
+
+```typescript
+interface Subject {
+  subscribe(observer: Observer): void;
+  unsubscribe(observer: Observer): void;
+  notify(): void;
+}
+```
+
+### **3. Concrete Observer**
+
+The **ConcreteObserver** class implements the **Observer** interface and contains logic for reacting to state changes from the **Subject**.
+
+```typescript
+class ConcreteObserver implements Observer {
+  private name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  // The method that gets called when the Subject notifies observers
+  update(message: string): void {
+    console.log(`${this.name} received message: ${message}`);
+  }
+}
+```
+
+### **4. Concrete Subject**
+
+The **ConcreteSubject** class implements the **Subject** interface. It maintains a state, and whenever this state changes, it notifies all subscribed observers.
+
+```typescript
+class ConcreteSubject implements Subject {
+  private observers: Observer[] = [];
+  private state: string;
+
+  // Subscribe an observer
+  subscribe(observer: Observer): void {
+    this.observers.push(observer);
+  }
+
+  // Unsubscribe an observer
+  unsubscribe(observer: Observer): void {
+    const index = this.observers.indexOf(observer);
+    if (index !== -1) {
+      this.observers.splice(index, 1);
+    }
+  }
+
+  // Notify all subscribed observers about the state change
+  notify(): void {
+    this.observers.forEach(observer => observer.update(this.state));
+  }
+
+  // Change the state and notify observers
+  setState(state: string): void {
+    this.state = state;
+    this.notify();
+  }
+
+  // Get the current state
+  getState(): string {
+    return this.state;
+  }
+}
+```
+
+### **5. Example Usage**
+
+Now, we will create instances of the **ConcreteObserver** and **ConcreteSubject**, subscribe the observers to the subject, and then change the subject’s state, triggering notifications.
+
+```typescript
+// Create a subject (ConcreteSubject)
+const subject = new ConcreteSubject();
+
+// Create observers
+const observer1 = new ConcreteObserver('Observer 1');
+const observer2 = new ConcreteObserver('Observer 2');
+
+// Subscribe the observers to the subject
+subject.subscribe(observer1);
+subject.subscribe(observer2);
+
+// Change the state of the subject (will notify observers)
+subject.setState('State 1'); // Both observers will be notified
+
+// Unsubscribe observer2 and change the state again
+subject.unsubscribe(observer2);
+subject.setState('State 2'); // Only observer1 will be notified
+```
+
+### **Output:**
+
+```
+Observer 1 received message: State 1
+Observer 2 received message: State 1
+Observer 1 received message: State 2
+```
+
+---
+
+### **Key OOP Design Principles in this Example:**
+
+1. **Encapsulation**: Each object (Subject and Observer) encapsulates its own behavior. The `ConcreteSubject` handles state changes, while the `ConcreteObserver` handles reactions to those state changes.
+   
+2. **Separation of Concerns**: The `ConcreteSubject` is concerned with the state, while the `ConcreteObserver` is concerned with responding to that state. The two don’t need to know about each other’s implementation details, just their interfaces.
+   
+3. **Loose Coupling**: The subject doesn't need to know about the concrete observers; it just knows that they implement the `Observer` interface. The observers only know about the subject in terms of how they get updated, but they don’t need to know how the subject works internally.
+   
+4. **Extensibility**: New observers can be added without modifying the existing code. If you want to add another observer, you simply implement the `Observer` interface and subscribe it to the `ConcreteSubject`.
+
+---
+
+### **Why Use the Observer Pattern in OOP?**
+
+- **Event-Driven Design**: The Observer pattern is helpful in systems where events or changes in the system must trigger actions across many parts of the system. For example, UI updates, logging, event dispatching, etc.
+  
+- **Decoupling Components**: The pattern allows different parts of your system (observers) to remain independent of the subject, making the system easier to extend and maintain.
+
+- **Real-time Updates**: It’s very effective in real-time systems like chat applications, weather tracking systems, etc., where changes in the data must be communicated to many consumers.
+
+---
+
+### **Limitations:**
+
+- **Memory Leaks**: If observers are not properly unsubscribed, they will still be notified even when they are no longer interested in updates, leading to memory leaks.
+  
+- **Performance Overhead**: If there are many observers, notifying all of them can be inefficient. You should consider how frequently notifications will occur.
+
+---
+
+### **Conclusion:**
+
+In Low-Level Design (LLD), the **Observer Pattern** provides a flexible, decoupled way to notify multiple objects about changes in another object’s state. It's useful in scenarios like event handling systems, UI updates, and real-time applications. By using this pattern, we can make systems that are easier to extend and maintain, as new observers can be added without modifying the core subject.
+
+Let me know if you want further details or examples! 😊

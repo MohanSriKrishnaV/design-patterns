@@ -1,0 +1,174 @@
+The **Strategy Pattern** is a **behavioral design pattern** that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. The main idea is that the strategy pattern enables a client to choose a specific algorithm at runtime without changing the context in which it is used. 
+
+### **When to use the Strategy Pattern**
+- When you have multiple algorithms to perform a similar task, and you want to select the algorithm dynamically at runtime.
+- When you want to decouple the algorithms from the client, allowing you to add new algorithms without modifying the client code.
+- When the behavior of a class should be chosen at runtime.
+
+### **Basic Structure**
+
+The Strategy Pattern consists of three key components:
+1. **Context**: The class that uses a `Strategy` to perform a task.
+2. **Strategy**: The interface that defines the method for performing a particular algorithm.
+3. **Concrete Strategy**: A class that implements the strategy interface and provides the concrete implementation of the algorithm.
+
+---
+
+### **Example: Payment Processing System**
+
+Let’s say you have a **Payment Processing** system that supports multiple payment methods: **Credit Card**, **PayPal**, and **Bitcoin**.
+
+In this example, the strategy pattern can be used to allow the user to select the payment method dynamically.
+
+---
+
+### **Step-by-Step Implementation**
+
+#### 1. **Define the Strategy Interface**
+The `PaymentStrategy` interface will define a method `pay()` that all payment strategies must implement.
+
+```typescript
+// PaymentStrategy.ts (Strategy Interface)
+export interface PaymentStrategy {
+    pay(amount: number): void;
+}
+```
+
+#### 2. **Create Concrete Strategies**
+Now, we create different payment methods as **concrete strategies** that implement the `PaymentStrategy` interface.
+
+```typescript
+// CreditCardPayment.ts (Concrete Strategy 1)
+import { PaymentStrategy } from './PaymentStrategy';
+
+export class CreditCardPayment implements PaymentStrategy {
+    constructor(private cardNumber: string, private cardExpiry: string) {}
+
+    pay(amount: number): void {
+        console.log(`Paying ${amount} using Credit Card ${this.cardNumber}, Expiry: ${this.cardExpiry}`);
+    }
+}
+```
+
+```typescript
+// PayPalPayment.ts (Concrete Strategy 2)
+import { PaymentStrategy } from './PaymentStrategy';
+
+export class PayPalPayment implements PaymentStrategy {
+    constructor(private email: string) {}
+
+    pay(amount: number): void {
+        console.log(`Paying ${amount} using PayPal with email: ${this.email}`);
+    }
+}
+```
+
+```typescript
+// BitcoinPayment.ts (Concrete Strategy 3)
+import { PaymentStrategy } from './PaymentStrategy';
+
+export class BitcoinPayment implements PaymentStrategy {
+    constructor(private bitcoinAddress: string) {}
+
+    pay(amount: number): void {
+        console.log(`Paying ${amount} using Bitcoin Address: ${this.bitcoinAddress}`);
+    }
+}
+```
+
+#### 3. **Create the Context Class**
+The **PaymentContext** will accept a **PaymentStrategy** and use it to perform the payment.
+
+```typescript
+// PaymentContext.ts (Context)
+import { PaymentStrategy } from './PaymentStrategy';
+
+export class PaymentContext {
+    private paymentStrategy: PaymentStrategy;
+
+    constructor(paymentStrategy: PaymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    // Method to change the payment strategy dynamically
+    setPaymentStrategy(paymentStrategy: PaymentStrategy): void {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    // Method to execute the payment
+    executePayment(amount: number): void {
+        this.paymentStrategy.pay(amount);
+    }
+}
+```
+
+#### 4. **Client Code to Use the Strategy Pattern**
+Now, we’ll use the strategy pattern in a real-world scenario where the user can choose their preferred payment method.
+
+```typescript
+// main.ts (Client Code)
+import { PaymentContext } from './PaymentContext';
+import { CreditCardPayment } from './CreditCardPayment';
+import { PayPalPayment } from './PayPalPayment';
+import { BitcoinPayment } from './BitcoinPayment';
+
+// Create payment strategies
+const creditCardPayment = new CreditCardPayment('1234-5678-9876-5432', '12/24');
+const paypalPayment = new PayPalPayment('user@example.com');
+const bitcoinPayment = new BitcoinPayment('1A2b3C4d5E6f7G8h9I0j');
+
+// Create the context
+const paymentContext = new PaymentContext(creditCardPayment);
+
+// Execute payment using Credit Card
+paymentContext.executePayment(100);  // Output: Paying 100 using Credit Card 1234-5678-9876-5432, Expiry: 12/24
+
+// Switch strategy to PayPal
+paymentContext.setPaymentStrategy(paypalPayment);
+paymentContext.executePayment(200);  // Output: Paying 200 using PayPal with email: user@example.com
+
+// Switch strategy to Bitcoin
+paymentContext.setPaymentStrategy(bitcoinPayment);
+paymentContext.executePayment(300);  // Output: Paying 300 using Bitcoin Address: 1A2b3C4d5E6f7G8h9I0j
+```
+
+---
+
+### **Explanation of the Code:**
+
+1. **Strategy Interface (`PaymentStrategy`)**:
+   - This is an interface that defines a `pay()` method. It is common for all the payment methods to implement this method in their own way.
+
+2. **Concrete Strategies (`CreditCardPayment`, `PayPalPayment`, `BitcoinPayment`)**:
+   - These classes implement the `PaymentStrategy` interface, providing their own implementation of the `pay()` method.
+   - Each strategy has a constructor that holds the data required to process the payment (e.g., credit card number, PayPal email, Bitcoin address).
+
+3. **Context (`PaymentContext`)**:
+   - This class contains a reference to a `PaymentStrategy` object.
+   - It allows changing the strategy dynamically using the `setPaymentStrategy()` method.
+   - The `executePayment()` method calls the `pay()` method on the current strategy to process the payment.
+
+4. **Client Code (`main.ts`)**:
+   - We instantiate the `PaymentContext` with a strategy (e.g., `CreditCardPayment`) and execute a payment.
+   - We can then switch to other strategies (e.g., PayPal, Bitcoin) and execute payments without changing the context class.
+   - This allows the payment method to be chosen at runtime, providing flexibility.
+
+---
+
+### **Advantages of the Strategy Pattern**:
+1. **Flexibility**: You can choose the behavior (algorithm) at runtime and switch between different strategies.
+2. **Decoupling**: The algorithm is decoupled from the client that uses it, making it easier to add or modify algorithms without changing the client code.
+3. **Open/Closed Principle**: The system is open for extension (you can add new strategies) but closed for modification (no need to change the context or existing strategies).
+4. **Avoids Conditional Statements**: Instead of using a series of `if` or `switch` statements, you encapsulate the behavior into different strategy classes.
+
+---
+
+### **When to Use the Strategy Pattern**:
+- When you have several variations of an algorithm, and you need to choose one dynamically.
+- When you want to decouple classes from the algorithm they are using.
+- When the algorithm changes based on the client's preferences or behavior, allowing runtime flexibility.
+
+---
+
+### **Summary**:
+The **Strategy Pattern** is ideal for situations where you have multiple ways to perform a task, and you want to make the algorithm interchangeable. By encapsulating different strategies into their own classes, you can switch them easily at runtime without modifying the client code, making your application more flexible and maintainable.

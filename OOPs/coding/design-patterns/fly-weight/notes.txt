@@ -1,0 +1,58 @@
+The **Flyweight Pattern** is a **structural design pattern** that helps reduce the memory usage by sharing common objects. It’s particularly useful when many objects are created that share common data or state. Rather than storing separate copies of data for each object, we can store the shared data externally and reuse it across multiple objects.
+
+### **Key Concepts of Flyweight Pattern:**
+- **Flyweight**: The object that is shared between multiple clients.
+- **Intrinsic State**: The data that is shared and does not change across multiple objects. This is stored within the flyweight object.
+- **Extrinsic State**: The data that varies from object to object. This is passed to the flyweight at runtime when needed but is not stored within the flyweight object.
+- **Flyweight Factory**: A class responsible for creating and managing flyweight objects. It ensures that flyweight objects are shared and reused when possible.
+
+### **Why Use Flyweight Pattern?**
+- To **minimize memory usage** by sharing common data across objects.
+- To handle large numbers of objects efficiently when the objects have shared state and only a small part of the state varies.
+
+### **Flyweight Pattern Structure**:
+1. **Flyweight Interface**: Defines the common methods for the flyweight objects.
+2. **Concrete Flyweight**: Implements the flyweight interface and stores the shared state.
+3. **Flyweight Factory**: Manages the flyweights and ensures shared instances.
+4. **Client**: Uses the flyweights and provides extrinsic state as needed.
+
+### **Example of Flyweight Pattern**:
+
+Let's say you're creating a system that manages a large number of **text formatting objects** (e.g., bold, italic). Instead of storing multiple copies of the same formatting (which takes up memory), you can store the formatting styles once and reuse them.
+
+### **Code Example:**
+
+```javascript
+
+// Output:
+// Creating new style: Bold
+// Hello, World! is styled with Bold
+// Creating new style: Italic
+// Flyweight Pattern is styled with Italic
+// Shared Style Example is styled with Bold
+// Another Text is styled with Italic
+```
+
+### **Explanation**:
+1. **TextStyle**: The **flyweight class** that defines the shared state (`style`). This object can be shared across many client objects.
+2. **TextStyleFactory**: The **flyweight factory** that manages the flyweight instances and ensures that only one instance of each style exists. It reuses instances when the same style is requested.
+3. **TextClient**: The client code that applies the styles. The client uses the factory to get the appropriate **flyweight instance** and applies it to the text.
+
+### **How It Works**:
+- If a particular style is requested for the first time (e.g., "Bold"), a new **TextStyle** object is created and stored in the factory.
+- When the same style is requested again, the factory **reuses** the existing **TextStyle** object instead of creating a new one, saving memory.
+
+### **Advantages**:
+- **Memory Efficient**: Flyweight pattern reduces memory consumption by sharing common states across objects.
+- **Improved Performance**: By reducing the number of objects created, the system can perform more efficiently, especially in scenarios with many objects that have shared state.
+- **Decoupling**: The pattern decouples the client code from the specific implementation of the shared objects, allowing easy maintenance.
+
+### **Disadvantages**:
+- **Complexity**: The Flyweight pattern can introduce additional complexity in the system, especially when managing the shared state and passing extrinsic state.
+- **Requires careful design**: Extrinsic state (client-specific data) must be passed correctly, which can lead to more complicated client code.
+
+### **Real-World Example**:
+A common real-world example of the Flyweight pattern is the use of **font styles** in text editors. Instead of creating a new object for each text element with the same font, we can reuse the same object for multiple elements that share the same font, thereby reducing memory usage.
+
+### **Summary**:
+The **Flyweight Pattern** is useful when you need to manage a large number of objects that share common state. By creating a central factory for the objects and reusing shared instances, you can reduce memory usage and improve performance, especially when you have many similar objects with varying external states.
