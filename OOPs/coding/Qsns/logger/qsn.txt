@@ -1,0 +1,36 @@
+### **Low-Level Design (LLD) Interview Question: Logger System**  
+
+🔹 **Question:**  
+Design a **Logger System** that can be used in an application to log messages at different levels. Your design should support the following:  
+
+### **Requirements:**  
+1. **Log Levels** – The system should support multiple logging levels:  
+   - `INFO`  
+   - `DEBUG`  
+   - `ERROR`  
+   - `WARN`  
+2. **Multiple Outputs** – Logs can be written to:  
+   - **Console**  
+   - **File**  
+   - **Database**  
+3. **Thread Safety** – The logger should be able to handle **concurrent log requests** from multiple threads.  
+4. **Configurable Log Level** – The user should be able to set a minimum log level (e.g., if `ERROR` is set, `INFO` and `DEBUG` logs should be ignored).  
+5. **Performance Optimization** – Logging should be **asynchronous** so that it does not block the main application.  
+6. **Format Customization** – Allow users to define log message formats (e.g., `"[TIMESTAMP] [LEVEL] Message"`).  
+7. **Extensibility** – The system should allow **adding new log destinations** in the future without changing core logic.  
+
+---
+
+### **Follow-up Questions:**  
+- How will you **ensure thread safety** while logging from multiple threads?  
+- How will you **buffer logs** before writing to a file or database?  
+- What **design patterns** will you use (e.g., Singleton, Strategy, Observer)?  
+- How would you handle **log rotation** (e.g., archive old logs)?  
+- How would you design **asynchronous logging**?  
+- How will you manage **log filtering** based on levels?  
+
+🎯 **Bonus:**  
+- How would you **optimize logging for a distributed system**?  
+- How would you implement **log correlation** for tracking requests across microservices?  
+
+Would you like to sketch a UML diagram or discuss the class structure? 🚀
