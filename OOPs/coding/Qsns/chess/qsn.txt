@@ -1,0 +1,26 @@
+### **Low-Level Design (LLD) Interview Question: Chess Game**  
+
+🔹 **Question:**  
+Design a **Chess Game** system where two players can play against each other. Your design should include the **key classes, interactions, and constraints**.  
+
+**Consider the following requirements:**  
+1. The game is played between **two players**.  
+2. Each player has **16 pieces** (King, Queen, Rook, Bishop, Knight, Pawn).  
+3. The board is **8x8** with alternating colors.  
+4. Players take turns making **valid moves**.  
+5. The game should detect **check, checkmate, and stalemate**.  
+6. Pieces should follow **specific movement rules** (e.g., Pawns move forward, Knights jump, etc.).  
+7. Optional: Add support for **undo move, save game, or AI-based opponent**.  
+
+🔹 **Follow-up Questions:**  
+- How will you represent the **board and pieces**?  
+- What design pattern(s) would you use?  
+- How will you ensure that only **valid moves** are allowed?  
+- How would you handle **game termination conditions**?  
+- How would you design the **move history and undo functionality**?  
+
+🎯 **Bonus:**  
+- How would you extend this design to support **online multiplayer**?  
+- How would you implement an **AI opponent** using algorithms like Minimax?  
+
+Would you like to discuss your solution? 🚀
